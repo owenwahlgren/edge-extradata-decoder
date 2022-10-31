@@ -40,12 +40,13 @@ func Decode(extraData *string) signer.IstanbulExtra {
 }
 
 func printData(extra *signer.IstanbulExtra) {
-	fmt.Printf("validators: %d:\taddress:bls\n", extra.Validators.Len())
+	fmt.Printf("\nvalidators: %d:\taddress:bls\n", extra.Validators.Len())
 	for i := 0; i < extra.Validators.Len(); i++ {
 		validator := extra.Validators.At(uint64(i))
 		fmt.Printf("validator: %v\n", validator)
 	}
-	fmt.Printf("\nProposerSeal: %v\n", extra.ProposerSeal)
+	fmt.Printf("\nProposerSeal: %v\n", hex.EncodeToHex(extra.ProposerSeal))
 	fmt.Printf("CommittedSeals: %v\n", extra.CommittedSeals.Num())
 	fmt.Printf("ParentCommittedSeals: %v\n", extra.ParentCommittedSeals.Num())
+
 }
